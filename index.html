@@ -8,14 +8,29 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
     <script>
         tailwind.config = {
-            theme: { extend: { colors: { gelap: '#121212', kartu: '#1E1E1E', ungu: '#8B5CF6', emas: '#FBBF24' } } }
+            theme: { extend: { colors: { gelap: '#121212', kartu: '#1E1E1E', ungu: '#8B5CF6' } } }
         }
     </script>
-    <style>.gradasi { background: linear-gradient(90deg, #8B5CF6, #EC4899); -webkit-background-clip: text; color: transparent; }</style>
-</head>
-<body class="bg-gelap text-white">
+    <style>
+        .gradasi {
+            background: linear-gradient(90deg, #8B5CF6, #EC4899);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
 
-<!-- ✅ HEADER: NAMA TOKO DI ATAS -->
+        /* ANIMASI MENU SAMPING */
+        #menuSamping {
+            transform: translateX(-100%);
+            transition: 0.3s ease;
+        }
+        #menuSamping.buka {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body class="bg-gelap text-white min-h-screen">
+
+<!-- ✅ HEADER UTAMA: NAMA TOKO BESAR -->
 <header class="bg-kartu border-b border-gray-700 py-6 text-center">
     <h1 class="text-4xl font-extrabold mb-1">
         <span class="gradasi">Xdnry777</span>
@@ -23,43 +38,51 @@
     <p class="text-lg text-gray-300">Top Up Semua Game Terpercaya</p>
 </header>
 
-<!-- TOMBOL MENU GARIS TIGA -->
-<div class="bg-gelap sticky top-0 z-50 px-4 py-3 flex justify-between items-center border-b border-gray-700">
+<!-- BARIS MENU NAVIGASI -->
+<div class="bg-gelap sticky top-0 z-40 px-4 py-3 flex justify-between items-center border-b border-gray-700">
     <button onclick="bukaMenu()" class="text-xl">
         <i class="fa fa-bars"></i>
     </button>
-    <span class="text-sm text-gray-400">Menu</span>
+    <span class="text-sm text-gray-400">Menu Utama</span>
     <div></div>
 </div>
 
-<!-- ✅ MENU SAMPING YANG MUNCUL KALAU GARIS TIGA DIKLIK -->
-<div id="latarMenu" class="fixed inset-0 bg-black/50 z-40 hidden"></div>
-<div id="menuSamping" class="fixed top-0 right-0 h-full w-64 bg-kartu border-l border-gray-700 z-50 transform translate-x-full transition-transform duration-300">
-    <div class="p-5">
-        <div class="flex justify-between items-center mb-6">
-            <h3 class="text-lg font-bold gradasi">Menu</h3>
-            <button id="tutupMenu" class="text-xl text-gray-400"><i class="fa fa-times"></i></button>
-        </div>
-        <div class="space-y-4">
-            <a href="#beranda" class="block py-2 border-b border-gray-700 hover:text-ungu"><i class="fa fa-home mr-2"></i> Beranda</a>
-            <a href="#topup" class="block py-2 border-b border-gray-700 hover:text-ungu"><i class="fa fa-gamepad mr-2"></i> Top Up Game</a>
-            <a href="#carabayar" class="block py-2 border-b border-gray-700 hover:text-ungu"><i class="fa fa-credit-card mr-2"></i> Cara Bayar</a>
-            <a href="#kontak" class="block py-2 border-b border-gray-700 hover:text-ungu"><i class="fa fa-whatsapp mr-2"></i> Hubungi Kami</a>
-            <a href="https://www.instagram.com/xdnry777_jr?igsh=cWFlenkxbDI1dG1m" target="_blank" class="block py-2 hover:text-pink-500"><i class="fa fa-instagram mr-2"></i> Instagram</a>
-        </div>
+<!-- ✅ MENU SAMPING -->
+<div id="menuSamping" class="fixed top-0 left-0 h-full w-64 bg-kartu border-r border-gray-700 z-50 p-4">
+    <div class="flex justify-between items-center mb-6">
+        <span class="text-xl font-bold gradasi">Xdnry777</span>
+        <button onclick="tutupMenu()" class="text-2xl">
+            <i class="fa fa-times"></i>
+        </button>
     </div>
+
+    <nav class="space-y-3">
+        <a href="#" class="block py-2 border-b border-gray-700 hover:text-ungu">
+            <i class="fa fa-home mr-2"></i> Beranda
+        </a>
+        <a href="#topup" class="block py-2 border-b border-gray-700 hover:text-ungu">
+            <i class="fa fa-gamepad mr-2"></i> Daftar Game
+        </a>
+        <a href="#carabayar" class="block py-2 border-b border-gray-700 hover:text-ungu">
+            <i class="fa fa-credit-card mr-2"></i> Cara Beli
+        </a>
+        <a href="login.html" class="block py-2 border-b border-gray-700 hover:text-ungu">
+            <i class="fa fa-user mr-2"></i> Masuk / Daftar
+        </a>
+    </nav>
 </div>
 
-<!-- Isi Toko -->
-<section id="beranda" class="text-center py-12 px-4">
-    <h1 class="text-3xl md:text-4xl font-bold mb-3">Top Up <span class="gradasi">Semua Game</span></h1>
-    <p class="text-gray-400 mb-8">Aman • Cepat • Harga Murah</p>
-</section>
+<!-- LAPISAN GELAP SAAT MENU TERBUKA -->
+<div id="latarTutup" onclick="tutupMenu()" class="fixed inset-0 bg-black/50 z-40 hidden"></div>
 
-<section id="topup" class="px-4 pb-12 max-w-4xl mx-auto">
+
+<!-- ✅ DAFTAR GAME -->
+<section id="topup" class="px-4 py-8 max-w-4xl mx-auto">
+    <h2 class="text-2xl font-bold text-center mb-8"><span class="gradasi">Pilih Game Kamu</span></h2>
+
     <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
 
-        <!-- 🎮 Mobile Legends -->
+        <!-- Mobile Legends -->
         <div class="bg-kartu p-4 rounded-xl border border-gray-700">
             <img src="https://files.catbox.moe/q692nn.jpg" alt="Mobile Legends" class="w-16 h-16 mx-auto mb-2 rounded-lg">
             <h3 class="font-bold text-center">Mobile Legends</h3>
@@ -71,7 +94,7 @@
             <button onclick="cekBeli()" class="w-full bg-ungu/20 text-ungu py-2 rounded-lg text-sm">Beli Sekarang</button>
         </div>
 
-        <!-- 🎮 Free Fire -->
+        <!-- Free Fire -->
         <div class="bg-kartu p-4 rounded-xl border border-gray-700">
             <img src="https://files.catbox.moe/00jh4l.jpg" alt="Free Fire" class="w-16 h-16 mx-auto mb-2 rounded-lg">
             <h3 class="font-bold text-center">Free Fire</h3>
@@ -83,7 +106,7 @@
             <button onclick="cekBeli()" class="w-full bg-ungu/20 text-ungu py-2 rounded-lg text-sm">Beli Sekarang</button>
         </div>
 
-        <!-- 🎮 PUBG Mobile -->
+        <!-- PUBG Mobile -->
         <div class="bg-kartu p-4 rounded-xl border border-gray-700">
             <img src="https://files.catbox.moe/xfxvzz.jpg" alt="PUBG Mobile" class="w-16 h-16 mx-auto mb-2 rounded-lg">
             <h3 class="font-bold text-center">PUBG Mobile</h3>
@@ -95,7 +118,7 @@
             <button onclick="cekBeli()" class="w-full bg-ungu/20 text-ungu py-2 rounded-lg text-sm">Beli Sekarang</button>
         </div>
 
-        <!-- 🎮 Valorant -->
+        <!-- Valorant -->
         <div class="bg-kartu p-4 rounded-xl border border-gray-700">
             <img src="https://files.catbox.moe/wvkmfq.jpg" alt="Valorant" class="w-16 h-16 mx-auto mb-2 rounded-lg">
             <h3 class="font-bold text-center">Valorant</h3>
@@ -107,7 +130,7 @@
             <button onclick="cekBeli()" class="w-full bg-ungu/20 text-ungu py-2 rounded-lg text-sm">Beli Sekarang</button>
         </div>
 
-        <!-- 🎮 Roblox -->
+        <!-- Roblox -->
         <div class="bg-kartu p-4 rounded-xl border border-gray-700">
             <img src="https://files.catbox.moe/rsf4xo.jpg" alt="Roblox" class="w-16 h-16 mx-auto mb-2 rounded-lg">
             <h3 class="font-bold text-center">Roblox</h3>
@@ -119,7 +142,7 @@
             <button onclick="cekBeli()" class="w-full bg-ungu/20 text-ungu py-2 rounded-lg text-sm">Beli Sekarang</button>
         </div>
 
-        <!-- 🎮 Higgs Domino -->
+        <!-- Higgs Domino -->
         <div class="bg-kartu p-4 rounded-xl border border-gray-700">
             <img src="https://files.catbox.moe/hpyri8.jpg" alt="Higgs Domino" class="w-16 h-16 mx-auto mb-2 rounded-lg">
             <h3 class="font-bold text-center">Higgs Domino</h3>
@@ -130,115 +153,80 @@
             </div>
             <button onclick="cekBeli()" class="w-full bg-ungu/20 text-ungu py-2 rounded-lg text-sm">Beli Sekarang</button>
         </div>
+
     </div>
 </section>
-<!-- ✅ BAGIAN KHUSUS CARA BELI & CARA BAYAR -->
-     <section id="carabayar" class="px-4 py-12 max-w-4xl mx-auto">
+
+
+<!-- ✅ CARA BELI & BAYAR -->
+<section id="carabayar" class="px-4 py-12 max-w-4xl mx-auto border-t border-gray-700">
     <h2 class="text-2xl font-bold text-center mb-8"><span class="gradasi">Cara Beli & Bayar</span></h2>
 
     <div class="grid md:grid-cols-2 gap-6">
         <div class="bg-kartu p-5 rounded-xl border border-gray-700">
-            <h3 class="font-semibold text-lg mb-4 text-ungu"><i class="fa fa-shopping-cart"></i> CARA BELI</h3>
-            <div class="space-y-3 text-gray-300">
-                <p>1. Pilih game yang ingin kamu beli</p>
-                <p>2. Klik tombol <b>Beli Sekarang</b></p>
-                <p>3. Isi ID Game dan Username dengan benar</p>
-                <p>4. Lakukan pembayaran sesuai nominal</p>
-                <p>5. Kirim struk ke Admin</p>
-                <p>6. Tunggu sebentar, barang akan masuk ke akunmu</p>
+            <h3 class="font-semibold text-lg mb-4 text-ungu"><i class="fa fa-list-ol"></i> CARA BELI</h3>
+            <div class="space-y-2 text-gray-300 text-sm">
+                <p>1. Klik tombol "Masuk / Daftar" dulu</p>
+                <p>2. Pilih game yang ingin dibeli</p>
+                <p>3. Klik tombol "Beli Sekarang"</p>
+                <p>4. Isi ID Game & Username dengan benar</p>
+                <p>5. Lakukan pembayaran sesuai nominal</p>
+                <p>6. Buat struk lalu kirim ke Admin</p>
+                <p>7. Tunggu konfirmasi, barang masuk otomatis</p>
             </div>
         </div>
 
         <div class="bg-kartu p-5 rounded-xl border border-gray-700">
-            <h3 class="font-semibold text-lg mb-4 text-green-400"><i class="fa fa-credit-card"></i> CARA BAYAR</h3>
-            <div class="space-y-3 text-gray-300">
-                <p><b>🔹 QRIS</b><br>
-                Scan kode QRIS yang tersedia, masukkan nominal yang pas lalu bayar lewat aplikasi apa saja.</p>
-
-                <p><b>🔹 Transfer DANA</b><br>
-                Kirim ke nomor <b>0851-6993-5089</b> a.n EN**** YU*****. Pastikan jumlahnya benar!</p>
+            <h3 class="font-semibold text-lg mb-4 text-green-400"><i class="fa fa-info-circle"></i> CARA BAYAR</h3>
+            <div class="space-y-3 text-gray-300 text-sm">
+                <div>
+                    <p class="font-medium text-white">🔹 QRIS</p>
+                    <p>Scan kode QRIS yang tersedia, masukkan nominal pas lalu bayar lewat aplikasi apa saja.</p>
+                </div>
+                <div>
+                    <p class="font-medium text-white">🔹 Transfer DANA</p>
+                    <p>Kirim ke nomor <b>0851-6993-5089</b> a.n EN**** YU*****. Pastikan jumlahnya benar!</p>
+                </div>
             </div>
         </div>
     </div>
 
     <div class="text-center mt-6">
         <a href="#topup" class="inline-block bg-ungu px-6 py-3 rounded-lg font-semibold">
-            <i class="fa fa-gamepad"></i> Mulai Belanja Sekarang
+            <i class="fa fa-gamepad"></i> Lihat Daftar Game
         </a>
     </div>
 </section>
-<!-- Kontak -->
-<section id="kontak" class="bg-kartu/30 py-10 px-4 text-center border-t border-gray-800">
-    <h2 class="text-xl font-bold mb-4">Hubungi Kami</h2>
-    <a href="https://wa.me/6285169935089" target="_blank" class="text-green-400">
-        <i class="fa fa-whatsapp mr-1"></i> 0851-6993-5089
-    </a>
-</section>
+
+
+<!-- ✅ FOOTER -->
+<footer class="bg-kartu border-t border-gray-700 py-4 text-center text-sm text-gray-500">
+    <p>&copy; 2026 Xdnry777. Semua Hak Dilindungi.</p>
+</footer>
+
 
 <script>
-// ✅ FUNGSI MENU GARIS TIGA
-const tombolMenu = document.getElementById('tombolMenu');
-const tutupMenu = document.getElementById('tutupMenu');
-const menuSamping = document.getElementById('menuSamping');
-const latarMenu = document.getElementById('latarMenu');
-
+// FUNGSI MENU
 function bukaMenu() {
-    menuSamping.classList.remove('translate-x-full');
-    latarMenu.classList.remove('hidden');
+    document.getElementById('menuSamping').classList.add('buka');
+    document.getElementById('latarTutup').classList.remove('hidden');
 }
 
-function tutupMenuSamping() {
-    menuSamping.classList.add('translate-x-full');
-    latarMenu.classList.add('hidden');
+function tutupMenu() {
+    document.getElementById('menuSamping').classList.remove('buka');
+    document.getElementById('latarTutup').classList.add('hidden');
 }
 
-tombolMenu.addEventListener('click', bukaMenu);
-tutupMenu.addEventListener('click', tutupMenuSamping);
-latarMenu.addEventListener('click', tutupMenuSamping);
-
-// Tutup menu kalau diklik salah satu link
-document.querySelectorAll('#menuSamping a').forEach(link => {
-    link.addEventListener('click', tutupMenuSamping);
-});
-
-// Cek kalau mau beli
+// CEK JIKA MAU BELI
 function cekBeli() {
     if(localStorage.getItem('login') === 'ya') {
         location.href = 'bayar.html';
     } else {
-        alert('⚠️ Silakan Login atau Daftar Akun Dulu!');
+        alert('⚠️ Silakan Login / Daftar Dulu!');
         location.href = 'login.html';
     }
 }
-
-// Ganti tombol kalau sudah login
-document.addEventListener('DOMContentLoaded', () => {
-    const menu = document.getElementById('menuAkun');
-    if(localStorage.getItem('login') === 'ya') {
-        const nama = localStorage.getItem('nama');
-        menu.innerHTML = `
-            <span class="text-sm text-gray-300">${nama}</span>
-            <button onclick="keluar()" class="text-red-400 text-sm ml-2">Keluar</button>
-        `;
-    }
-});
-
-function keluar() {
-    localStorage.clear();
-    location.reload();
-}
-
-// Gulir halus
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', e => {
-        const tujuan = link.getAttribute('href');
-        if(tujuan.startsWith('#')) {
-            e.preventDefault();
-            const el = document.querySelector(tujuan);
-            if(el) el.scrollIntoView({behavior:'smooth'});
-        }
-    });
-});
 </script>
+
 </body>
 </html>
