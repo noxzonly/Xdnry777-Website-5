@@ -24,7 +24,6 @@
 <body class="bg-gelap text-white min-h-screen p-4">
 
 <script>
-// Lindungi halaman
 if(localStorage.getItem('login') !== 'ya') {
     alert('⚠️ Harap Login Dulu!');
     location.href = 'login.html';
@@ -32,13 +31,13 @@ if(localStorage.getItem('login') !== 'ya') {
 </script>
 
 <div class="max-w-md mx-auto mt-10">
-    <a href="index.html" class="text-ungu mb-4 inline-block tombol-sembunyi"><i class="fa fa-arrow-left"></i> Kembali</a>
-    <h1 class="text-2xl font-bold text-center mb-6 tombol-sembunyi"><span class="gradasi">Pembayaran</span></h1>
+    <a href="index.html" class="text-ungu mb-4 inline-block"><i class="fa fa-arrow-left"></i> Kembali</a>
+    <h1 class="text-2xl font-bold text-center mb-6"><span class="gradasi">Pembayaran</span></h1>
 
-    <!-- PILIH DATA PEMBELIAN -->
-    <div class="bg-kartu p-5 rounded-xl border border-gray-700 mb-4 tombol-sembunyi">
+    <!-- DATA PESANAN -->
+    <div class="bg-kartu p-5 rounded-xl border border-gray-700 mb-4">
         <h3 class="font-semibold text-lg mb-3">Data Pesanan</h3>
-        <select id="pilihGame" class="w-full bg-gelap border border-gray-600 rounded-lg p-3 mb-3" required>
+        <select id="pilihGame" class="w-full bg-gelap border border-gray-600 rounded-lg p-3 mb-3">
             <option value="">-- Pilih Game & Nominal --</option>
             <option value="Mobile Legends | 56 Diamond | Rp 16.000">Mobile Legends - 56 Diamond - Rp 16.000</option>
             <option value="Free Fire | 70 Diamond | Rp 12.500">Free Fire - 70 Diamond - Rp 12.500</option>
@@ -51,81 +50,67 @@ if(localStorage.getItem('login') !== 'ya') {
         <button onclick="buatStruk()" class="w-full bg-ungu mt-3 py-2 rounded-lg font-semibold">Buat Struk Pembelian</button>
     </div>
 
-    <!-- ✅ BAGIAN QRIS (TERPISAH) -->
-    <div class="bg-kartu p-5 rounded-xl border border-gray-700 mb-4 text-center tombol-sembunyi">
+    <!-- QRIS -->
+    <div class="bg-kartu p-5 rounded-xl border border-gray-700 mb-4 text-center">
         <h3 class="font-semibold text-lg mb-4 text-green-400"><i class="fa fa-qrcode"></i> BAYAR PAKAI QRIS</h3>
         <div class="bg-white p-3 rounded-lg inline-block mb-3">
             <img src="https://files.catbox.moe/g2agou.jpg" alt="QRIS Xdnry777" class="w-48 h-48 rounded">
         </div>
-        <p class="text-sm text-gray-400">Bisa semua aplikasi pembayaran</p>
-        <p class="font-medium mt-1">NOXZCRUEL</p>
+        <p class="text-sm text-gray-400">Semua aplikasi pembayaran</p>
+        <p class="font-medium mt-1"NOXZCRUEL</p>
     </div>
 
-    <!-- ✅ BAGIAN TRANSFER DANA (TERPISAH) -->
-    <div class="bg-kartu p-5 rounded-xl border border-gray-700 mb-4 tombol-sembunyi">
+    <!-- DANA -->
+    <div class="bg-kartu p-5 rounded-xl border border-gray-700 mb-4">
         <h3 class="font-semibold text-lg mb-4 text-blue-400 text-center"><i class="fa fa-credit-card"></i> TRANSFER DANA</h3>
         <p class="mb-1 text-center">Nomor Tujuan:</p>
         <p class="text-xl font-bold text-center">0851-6993-5089</p>
         <p class="text-gray-400 text-center mt-1">a.n EN**** YU*****</p>
     </div>
 
-    <!-- AREA STRUK (BISA DICETAK) -->
+    <!-- STRUK -->
     <div id="struk-cetak" class="bg-white text-black p-5 rounded-xl border-2 border-gray-400 mb-6 hidden">
         <div class="text-center mb-4">
             <h2 class="text-xl font-bold">Xdnry777 STORE</h2>
             <p class="text-xs text-gray-500">Top Up Game Terpercaya</p>
             <hr class="my-2 border-gray-400">
         </div>
-
         <div class="space-y-1 text-sm mb-3">
             <div class="flex justify-between"><span>Tanggal</span><span id="s-tgl"></span></div>
             <div class="flex justify-between"><span>No. Transaksi</span><span id="s-trx"></span></div>
             <div class="flex justify-between"><span>Nama Pembeli</span><span id="s-nama"></span></div>
         </div>
         <hr class="my-2 border-gray-400">
-
         <div class="space-y-1 text-sm mb-3">
             <div class="flex justify-between"><span>Game</span><span id="s-game"></span></div>
             <div class="flex justify-between"><span>ID Game</span><span id="s-id"></span></div>
             <div class="flex justify-between"><span>Username</span><span id="s-user"></span></div>
         </div>
         <hr class="my-2 border-gray-400">
-
         <div class="text-center py-2 border-2 border-yellow-500 rounded mb-3 bg-yellow-50">
             <p class="font-bold text-yellow-700 text-lg">⏳ STATUS: BELUM LUNAS</p>
         </div>
-
-        <p class="text-center text-xs text-gray-500">
-            Catatan: Silakan bayar sesuai nominal. <br>
-            Kesalahan ID bukan tanggung jawab admin & tidak bisa refund.
-        </p>
+        <p class="text-center text-xs text-gray-500">Catatan: Kesalahan ID bukan tanggung jawab admin & tidak bisa refund.</p>
     </div>
 
-    <!-- TOMBOL AKSI -->
-    <div id="tombol-aksi" class="hidden space-y-3 tombol-sembunyi">
-        <button onclick="window.print()" class="w-full bg-blue-600 py-3 rounded-lg font-semibold">
+    <div id="tombol-aksi" class="hidden space-y-3">
+        <button onclick="window.print()" class="w-full bg-blue-600 py-3 rounded-lg font-semibold tombol-sembunyi">
             <i class="fa fa-print"></i> CETAK STRUK
         </button>
-        <button onclick="kirimKeWA()" class="w-full bg-green-600 py-3 rounded-lg font-semibold">
+        <button onclick="kirimKeWA()" class="w-full bg-green-600 py-3 rounded-lg font-semibold tombol-sembunyi">
             <i class="fa fa-whatsapp"></i> KIRIM STRUK KE ADMIN
         </button>
     </div>
-
 </div>
 
 <script>
 let dataStrukSaja = '';
-
 function buatStruk() {
     const game = document.getElementById('pilihGame').value;
     const id = document.getElementById('idGame').value;
     const user = document.getElementById('userGame').value;
     const nama = localStorage.getItem('nama') || 'Pembeli';
-
-    if(!game || !id || !user) {
-        alert('⚠️ Lengkapi semua data dulu!');
-        return;
-    }
+    if(!game || !id || !user) { alert('⚠️ Lengkapi data dulu!'); return; }
 
     const tgl = new Date().toLocaleDateString('id-ID', {day:'2-digit', month:'long', year:'numeric'});
     const trx = 'TRX-' + Math.floor(Math.random() * 90000) + 10000;
@@ -137,44 +122,21 @@ function buatStruk() {
     document.getElementById('s-id').textContent = id;
     document.getElementById('s-user').textContent = user;
 
-    dataStrukSaja = `
-══════════════════════
-        STRUK PEMBELIAN
-           Xdnry777
-══════════════════════
-📅 Tanggal : ${tgl}
-📝 No. Trx : ${trx}
-👤 Pembeli: ${nama}
-══════════════════════
-🎮 Game    : ${game}
-🆔 ID Game : ${id}
-👤 Username: ${user}
-══════════════════════
-📊 STATUS  : ⏳ BELUM LUNAS
-══════════════════════
-Catatan: Kesalahan ID bukan tanggung jawab admin & tidak bisa refund.
-    `.trim();
+    dataStrukSaja = `══════════════════════\nSTRUK PEMBELIAN\nXdnry777\n══════════════════════\n📅 Tanggal : ${tgl}\n📝 No. Trx : ${trx}\n👤 Pembeli: ${nama}\n══════════════════════\n🎮 Game    : ${game}\n🆔 ID Game : ${id}\n👤 Username: ${user}\n══════════════════════\n📊 STATUS  : ⏳ BELUM LUNAS\n══════════════════════\nCatatan: Kesalahan ID bukan tanggung jawab admin & tidak bisa refund.`;
 
     document.getElementById('struk-cetak').classList.remove('hidden');
     document.getElementById('tombol-aksi').classList.remove('hidden');
 }
 
 function kirimKeWA() {
-    const link = `https://wa.me/6285169935089?text=${encodeURIComponent(dataStrukSaja)}`;
-    window.open(link, '_blank');
-
-    // Ganti status jadi sudah lunas
-    const statusEl = document.querySelector('#struk-cetak .text-yellow-700');
-    const kotakStatus = document.querySelector('#struk-cetak .border-yellow-500');
-    
-    statusEl.textContent = '✅ STATUS: SUDAH LUNAS';
-    statusEl.classList.remove('text-yellow-700');
-    statusEl.classList.add('text-green-700');
-    
-    kotakStatus.classList.remove('border-yellow-500', 'bg-yellow-50');
-    kotakStatus.classList.add('border-green-500', 'bg-green-50');
+    window.open(`https://wa.me/6285169935089?text=${encodeURIComponent(dataStrukSaja)}`, '_blank');
+    const st = document.querySelector('.text-yellow-700');
+    const kt = document.querySelector('.border-yellow-500');
+    st.textContent = '✅ STATUS: SUDAH LUNAS';
+    st.classList.replace('text-yellow-700', 'text-green-700');
+    kt.classList.replace('border-yellow-500', 'border-green-500');
+    kt.classList.replace('bg-yellow-50', 'bg-green-50');
 }
 </script>
-
 </body>
 </html>
