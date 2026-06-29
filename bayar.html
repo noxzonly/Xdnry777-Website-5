@@ -51,17 +51,25 @@ if(localStorage.getItem('login') !== 'ya') {
         <button onclick="buatStruk()" class="w-full bg-ungu mt-3 py-2 rounded-lg font-semibold">Buat Struk Pembelian</button>
     </div>
 
-    <!-- CARA BAYAR -->
+    <!-- ✅ BAGIAN QRIS (TERPISAH) -->
     <div class="bg-kartu p-5 rounded-xl border border-gray-700 mb-4 text-center tombol-sembunyi">
-        <h3 class="font-semibold text-lg mb-4 text-green-400"><i class="fa fa-qrcode"></i> Cara Pembayaran</h3>
+        <h3 class="font-semibold text-lg mb-4 text-green-400"><i class="fa fa-qrcode"></i> BAYAR PAKAI QRIS</h3>
         <div class="bg-white p-3 rounded-lg inline-block mb-3">
             <img src="https://files.catbox.moe/g2agou.jpg" alt="QRIS Xdnry777" class="w-48 h-48 rounded">
         </div>
-        <p class="text-sm text-gray-400">Atau Transfer DANA:</p>
-        <p class="font-semibold">0851-6993-5089 a.n EN**** YU*****</p>
+        <p class="text-sm text-gray-400">Bisa semua aplikasi pembayaran</p>
+        <p class="font-medium mt-1">NOXZCRUEL</p>
     </div>
 
-    <!-- ✅ AREA STRUK (BISA DICETAK) -->
+    <!-- ✅ BAGIAN TRANSFER DANA (TERPISAH) -->
+    <div class="bg-kartu p-5 rounded-xl border border-gray-700 mb-4 tombol-sembunyi">
+        <h3 class="font-semibold text-lg mb-4 text-blue-400 text-center"><i class="fa fa-credit-card"></i> TRANSFER DANA</h3>
+        <p class="mb-1 text-center">Nomor Tujuan:</p>
+        <p class="text-xl font-bold text-center">0851-6993-5089</p>
+        <p class="text-gray-400 text-center mt-1">a.n EN**** YU*****</p>
+    </div>
+
+    <!-- AREA STRUK (BISA DICETAK) -->
     <div id="struk-cetak" class="bg-white text-black p-5 rounded-xl border-2 border-gray-400 mb-6 hidden">
         <div class="text-center mb-4">
             <h2 class="text-xl font-bold">Xdnry777 STORE</h2>
@@ -93,7 +101,7 @@ if(localStorage.getItem('login') !== 'ya') {
         </p>
     </div>
 
-    <!-- TOMBOL AKSI SETELAH STRUK MUNCUL -->
+    <!-- TOMBOL AKSI -->
     <div id="tombol-aksi" class="hidden space-y-3 tombol-sembunyi">
         <button onclick="window.print()" class="w-full bg-blue-600 py-3 rounded-lg font-semibold">
             <i class="fa fa-print"></i> CETAK STRUK
@@ -119,11 +127,9 @@ function buatStruk() {
         return;
     }
 
-    // Data otomatis
     const tgl = new Date().toLocaleDateString('id-ID', {day:'2-digit', month:'long', year:'numeric'});
     const trx = 'TRX-' + Math.floor(Math.random() * 90000) + 10000;
 
-    // Isi ke struk cetak
     document.getElementById('s-tgl').textContent = tgl;
     document.getElementById('s-trx').textContent = trx;
     document.getElementById('s-nama').textContent = nama;
@@ -131,7 +137,6 @@ function buatStruk() {
     document.getElementById('s-id').textContent = id;
     document.getElementById('s-user').textContent = user;
 
-    // Simpan data untuk dikirim ke WA
     dataStrukSaja = `
 ══════════════════════
         STRUK PEMBELIAN
@@ -150,7 +155,6 @@ function buatStruk() {
 Catatan: Kesalahan ID bukan tanggung jawab admin & tidak bisa refund.
     `.trim();
 
-    // Tampilkan struk & tombol
     document.getElementById('struk-cetak').classList.remove('hidden');
     document.getElementById('tombol-aksi').classList.remove('hidden');
 }
@@ -158,6 +162,17 @@ Catatan: Kesalahan ID bukan tanggung jawab admin & tidak bisa refund.
 function kirimKeWA() {
     const link = `https://wa.me/6285169935089?text=${encodeURIComponent(dataStrukSaja)}`;
     window.open(link, '_blank');
+
+    // Ganti status jadi sudah lunas
+    const statusEl = document.querySelector('#struk-cetak .text-yellow-700');
+    const kotakStatus = document.querySelector('#struk-cetak .border-yellow-500');
+    
+    statusEl.textContent = '✅ STATUS: SUDAH LUNAS';
+    statusEl.classList.remove('text-yellow-700');
+    statusEl.classList.add('text-green-700');
+    
+    kotakStatus.classList.remove('border-yellow-500', 'bg-yellow-50');
+    kotakStatus.classList.add('border-green-500', 'bg-green-50');
 }
 </script>
 
