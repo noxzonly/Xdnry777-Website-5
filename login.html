@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akun - Xdnry777</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <script>
+        tailwind.config = {
+            theme: { extend: { colors: { gelap: '#121212', kartu: '#1E1E1E', ungu: '#8B5CF6' } } }
+        }
+    </script>
+    <style>.gradasi { background: linear-gradient(90deg, #8B5CF6, #EC4899); -webkit-background-clip: text; color: transparent; }</style>
+</head>
+<body class="bg-gelap text-white min-h-screen flex items-center justify-center p-4">
+    <div class="bg-kartu p-6 rounded-xl w-full max-w-md border border-gray-700">
+        <h1 class="text-center text-2xl font-bold mb-6"><span class="gradasi">Xdnry777</span></h1>
+
+        <div class="flex mb-5 bg-gelap rounded-lg p-1">
+            <button id="btnMasuk" class="w-1/2 py-2 rounded-lg bg-ungu font-medium">Masuk</button>
+            <button id="btnDaftar" class="w-1/2 py-2 rounded-lg text-gray-400">Daftar</button>
+        </div>
+
+        <form id="formMasuk" class="space-y-3">
+            <input type="text" id="user" placeholder="Username" class="w-full p-3 bg-gelap border border-gray-600 rounded-lg" required>
+            <input type="password" id="pass" placeholder="Password" class="w-full p-3 bg-gelap border border-gray-600 rounded-lg" required>
+            <p id="pesanSalah" class="text-red-400 text-sm hidden">Username/Password salah!</p>
+            <button class="w-full bg-ungu py-3 rounded-lg font-semibold mt-2">Masuk Sekarang</button>
+            <a href="index.html" class="block text-center text-gray-400 text-sm mt-3">← Kembali ke Toko</a>
+        </form>
+
+        <form id="formDaftar" class="space-y-3 hidden">
+            <input type="text" id="nama" placeholder="Nama Lengkap" class="w-full p-3 bg-gelap border border-gray-600 rounded-lg" required>
+            <input type="tel" id="wa" placeholder="Nomor WhatsApp" class="w-full p-3 bg-gelap border border-gray-600 rounded-lg" required>
+            <input type="text" id="userBaru" placeholder="Buat Username" class="w-full p-3 bg-gelap border border-gray-600 rounded-lg" required>
+            <input type="password" id="passBaru" placeholder="Buat Password" class="w-full p-3 bg-gelap border border-gray-600 rounded-lg" required>
+            <p id="pesanBerhasil" class="text-green-400 text-sm hidden">Akun dibuat! Silakan Masuk.</p>
+            <button class="w-full bg-ungu py-3 rounded-lg font-semibold mt-2">Buat Akun</button>
+        </form>
+    </div>
+
+    <script>
+        const tabMasuk = document.getElementById('btnMasuk');
+        const tabDaftar = document.getElementById('btnDaftar');
+        const fMasuk = document.getElementById('formMasuk');
+        const fDaftar = document.getElementById('formDaftar');
+
+        tabMasuk.onclick = () => {
+            tabMasuk.classList.add('bg-ungu'); tabDaftar.classList.remove('bg-ungu'); tabDaftar.classList.add('text-gray-400');
+            fMasuk.classList.remove('hidden'); fDaftar.classList.add('hidden');
+        };
+        tabDaftar.onclick = () => {
+            tabDaftar.classList.add('bg-ungu'); tabMasuk.classList.remove('bg-ungu');
+            fDaftar.classList.remove('hidden'); fMasuk.classList.add('hidden');
+        };
+
+        formDaftar.onsubmit = e => {
+            e.preventDefault();
+            const dataAkun = JSON.parse(localStorage.getItem('akunToko') || '[]');
+            dataAkun.push({nama:nama.value, wa:wa.value, user:userBaru.value, pass:passBaru.value});
+            localStorage.setItem('akunToko', JSON.stringify(dataAkun));
+            pesanBerhasil.classList.remove('hidden');
+            formDaftar.reset();
+            setTimeout(() => tabMasuk.click(), 1200);
+        };
+
+        formMasuk.onsubmit = e => {
+            e.preventDefault();
+            const akun = JSON.parse(localStorage.getItem('akunToko') || '[]');
+            const cocok = akun.find(a => a.user === user.value && a.pass === pass.value);
+            if(cocok) {
+                localStorage.setItem('login', 'ya');
+                localStorage.setItem('nama', cocok.nama);
+                localStorage.setItem('wa', cocok.wa);
+                location.href = 'index.html';
+            } else {
+                pesanSalah.classList.remove('hidden');
+            }
+        };
+    </script>
+</body>
+</html>
