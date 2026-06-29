@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bayar - Xdnry777</title>
+    <title>Xdnry777 - Top Up Game</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
     <script>
@@ -12,136 +12,233 @@
         }
     </script>
     <style>
-        .gradasi { background: linear-gradient(90deg, #8B5CF6, #EC4899); -webkit-background-clip: text; color: transparent; }
-        
-        @media print {
-            body { background: white !important; color: black !important; }
-            .tombol-sembunyi { display: none !important; }
-            #struk-cetak { position: absolute; left: 0; top: 0; width: 100%; background: white; color: black; padding: 20px; }
+        .gradasi {
+            background: linear-gradient(90deg, #8B5CF6, #EC4899);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        /* ANIMASI MENU SAMPING */
+        #menuSamping {
+            transform: translateX(-100%);
+            transition: 0.3s ease;
+        }
+        #menuSamping.buka {
+            transform: translateX(0);
         }
     </style>
 </head>
-<body class="bg-gelap text-white min-h-screen p-4">
+<body class="bg-gelap text-white min-h-screen">
 
-<script>
-if(localStorage.getItem('login') !== 'ya') {
-    alert('⚠️ Harap Login Dulu!');
-    location.href = 'login.html';
-}
-</script>
+<!-- ✅ HEADER UTAMA: NAMA TOKO BESAR -->
+<header class="bg-kartu border-b border-gray-700 py-6 text-center">
+    <h1 class="text-4xl font-extrabold mb-1">
+        <span class="gradasi">Xdnry777</span>
+    </h1>
+    <p class="text-lg text-gray-300">Top Up Semua Game Terpercaya</p>
+</header>
 
-<div class="max-w-md mx-auto mt-10">
-    <a href="index.html" class="text-ungu mb-4 inline-block"><i class="fa fa-arrow-left"></i> Kembali</a>
-    <h1 class="text-2xl font-bold text-center mb-6"><span class="gradasi">Pembayaran</span></h1>
-
-    <!-- DATA PESANAN -->
-    <div class="bg-kartu p-5 rounded-xl border border-gray-700 mb-4">
-        <h3 class="font-semibold text-lg mb-3">Data Pesanan</h3>
-       <select id="pilihGame" class="w-full bg-gelap border border-gray-600 rounded-lg p-3 mb-3" required>
-         <option value="">-- Pilih Game & Nominal --</option>
-        <option value="Mobile Legends | 12 Diamond | Rp 3.800">Mobile Legends - 12 Diamond - Rp 3.800</option>
-        <option value="Mobile Legends | 28 Diamond | Rp 7.900">Mobile Legends - 28 Diamond - Rp 7.900</option>
-        <option value="Mobile Legends | 56 Diamond | Rp 15.500">Mobile Legends - 56 Diamond - Rp 15.500</option>
-        <option value="Mobile Legends | 112 Diamond | Rp 30.000">Mobile Legends - 112 Diamond - Rp 30.000</option>
-         <option value="Free Fire | 20 Diamond | Rp 3.500">Free Fire - 20 Diamond - Rp 3.500</option>
-         <option value="Free Fire | 70 Diamond | Rp 12.000">Free Fire - 70 Diamond - Rp 12.000</option>
-        <option value="Free Fire | 355 Diamond | Rp 56.000">Free Fire - 355 Diamond - Rp 56.000</option>
-        <option value="Roblox | 400 Robux | Rp 72.000">Roblox - 400 Robux - Rp 72.000</option>
-        <option value="Higgs Domino | 100M Koin | Rp 9.500">Higgs Domino - 100M Koin - Rp 9.500</option>
-        <option value="Higgs Domino | 1B Koin | Rp 85.000">Higgs Domino - 1B Koin - Rp 85.000</option>
-        </select>
-        <input type="text" id="idGame" placeholder="Masukkan ID Akun Game" class="w-full bg-gelap border border-gray-600 rounded-lg p-3 mb-3">
-        <input type="text" id="userGame" placeholder="Username Game" class="w-full bg-gelap border border-gray-600 rounded-lg p-3">
-        <button onclick="buatStruk()" class="w-full bg-ungu mt-3 py-2 rounded-lg font-semibold">Buat Struk Pembelian</button>
-    </div>
-
-    <!-- QRIS -->
-    <div class="bg-kartu p-5 rounded-xl border border-gray-700 mb-4 text-center">
-        <h3 class="font-semibold text-lg mb-4 text-green-400"><i class="fa fa-qrcode"></i> BAYAR PAKAI QRIS</h3>
-        <div class="bg-white p-3 rounded-lg inline-block mb-3">
-            <img src="https://files.catbox.moe/g2agou.jpg" alt="QRIS Xdnry777" class="w-48 h-48 rounded">
-        </div>
-        <p class="text-sm text-gray-400">Semua aplikasi pembayaran</p>
-        <p class="font-medium mt-1"NOXZCRUEL</p>
-    </div>
-
-    <!-- DANA -->
-    <div class="bg-kartu p-5 rounded-xl border border-gray-700 mb-4">
-        <h3 class="font-semibold text-lg mb-4 text-blue-400 text-center"><i class="fa fa-credit-card"></i> TRANSFER DANA</h3>
-        <p class="mb-1 text-center">Nomor Tujuan:</p>
-        <p class="text-xl font-bold text-center">0851-6993-5089</p>
-        <p class="text-gray-400 text-center mt-1">a.n EN**** YU*****</p>
-    </div>
-
-    <!-- STRUK -->
-    <div id="struk-cetak" class="bg-white text-black p-5 rounded-xl border-2 border-gray-400 mb-6 hidden">
-        <div class="text-center mb-4">
-            <h2 class="text-xl font-bold">Xdnry777 STORE</h2>
-            <p class="text-xs text-gray-500">Top Up Game Terpercaya</p>
-            <hr class="my-2 border-gray-400">
-        </div>
-        <div class="space-y-1 text-sm mb-3">
-            <div class="flex justify-between"><span>Tanggal</span><span id="s-tgl"></span></div>
-            <div class="flex justify-between"><span>No. Transaksi</span><span id="s-trx"></span></div>
-            <div class="flex justify-between"><span>Nama Pembeli</span><span id="s-nama"></span></div>
-        </div>
-        <hr class="my-2 border-gray-400">
-        <div class="space-y-1 text-sm mb-3">
-            <div class="flex justify-between"><span>Game</span><span id="s-game"></span></div>
-            <div class="flex justify-between"><span>ID Game</span><span id="s-id"></span></div>
-            <div class="flex justify-between"><span>Username</span><span id="s-user"></span></div>
-        </div>
-        <hr class="my-2 border-gray-400">
-        <div class="text-center py-2 border-2 border-yellow-500 rounded mb-3 bg-yellow-50">
-            <p class="font-bold text-yellow-700 text-lg">⏳ STATUS: BELUM LUNAS</p>
-        </div>
-        <p class="text-center text-xs text-gray-500">Catatan: Kesalahan ID bukan tanggung jawab admin & tidak bisa refund.</p>
-    </div>
-
-    <div id="tombol-aksi" class="hidden space-y-3">
-        <button onclick="window.print()" class="w-full bg-blue-600 py-3 rounded-lg font-semibold tombol-sembunyi">
-            <i class="fa fa-print"></i> CETAK STRUK
-        </button>
-        <button onclick="kirimKeWA()" class="w-full bg-green-600 py-3 rounded-lg font-semibold tombol-sembunyi">
-            <i class="fa fa-whatsapp"></i> KIRIM STRUK KE ADMIN
-        </button>
-    </div>
+<!-- BARIS MENU NAVIGASI -->
+<div class="bg-gelap sticky top-0 z-40 px-4 py-3 flex justify-between items-center border-b border-gray-700">
+    <button onclick="bukaMenu()" class="text-xl">
+        <i class="fa fa-bars"></i>
+    </button>
+    <span class="text-sm text-gray-400">Menu Utama</span>
+    <div></div>
 </div>
 
+<!-- ✅ MENU SAMPING -->
+<div id="menuSamping" class="fixed top-0 left-0 h-full w-64 bg-kartu border-r border-gray-700 z-50 p-4">
+    <div class="flex justify-between items-center mb-6">
+        <span class="text-xl font-bold gradasi">Xdnry777</span>
+        <button onclick="tutupMenu()"    class="text-2xl">
+    <i class="fa fa-times"></i>
+</button>
+    <nav class="space-y-3">
+        <a href="#" class="block py-2 border-b border-gray-700 hover:text-ungu">
+            <i class="fa fa-home mr-2"></i> Beranda
+        </a>
+        <a href="#topup" class="block py-2 border-b border-gray-700 hover:text-ungu">
+            <i class="fa fa-gamepad mr-2"></i> Daftar Game
+        </a>
+        <a href="#carabayar" class="block py-2 border-b border-gray-700 hover:text-ungu">
+            <i class="fa fa-credit-card mr-2"></i> Cara Beli
+        </a>
+        <a href="login.html" class="block py-2 border-b border-gray-700 hover:text-ungu">
+            <i class="fa fa-user mr-2"></i> Masuk / Daftar
+        </a>
+    </nav>
+</div>
+
+<!-- LAPISAN GELAP SAAT MENU TERBUKA -->
+<div id="latarTutup" onclick="tutupMenu()" class="fixed inset-0 bg-black/50 z-40 hidden"></div>
+
+<!-- ✅ DAFTAR GAME LENGKAP -->
+<section id="topup" class="px-4 py-8 max-w-4xl mx-auto">
+    <h2 class="text-2xl font-bold text-center mb-8"><span class="gradasi">Pilih Game Kamu</span></h2>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+
+        <!-- 🎮 Mobile Legends -->
+        <div class="bg-kartu p-4 rounded-xl border border-gray-700">
+            <img src="https://files.catbox.moe/q692nn.jpg" alt="Mobile Legends" class="w-16 h-16 mx-auto mb-2 rounded-lg">
+            <h3 class="font-bold text-center">Mobile Legends</h3>
+            <p class="text-sm text-gray-400 text-center mb-2">Diamond</p>
+            <div class="text-xs space-y-1 mb-3">
+                <div class="flex justify-between"><span>12 Diamond</span><span class="text-ungu">Rp3.800</span></div>
+                <div class="flex justify-between"><span>28 Diamond</span><span class="text-ungu">Rp7.900</span></div>
+                <div class="flex justify-between"><span>56 Diamond</span><span class="text-ungu">Rp15.500</span></div>
+                <div class="flex justify-between"><span>112 Diamond</span><span class="text-ungu">Rp30.000</span></div>
+                <div class="flex justify-between"><span>240 Diamond</span><span class="text-ungu">Rp62.000</span></div>
+            </div>
+            <button onclick="cekBeli()" class="w-full bg-ungu/20 text-ungu py-2 rounded-lg text-sm">Beli Sekarang</button>
+        </div>
+
+        <!-- 🎮 Free Fire -->
+        <div class="bg-kartu p-4 rounded-xl border border-gray-700">
+            <img src="https://files.catbox.moe/00jh4l.jpg" alt="Free Fire" class="w-16 h-16 mx-auto mb-2 rounded-lg">
+            <h3 class="font-bold text-center">Free Fire</h3>
+            <p class="text-sm text-gray-400 text-center mb-2">Diamond</p>
+            <div class="text-xs space-y-1 mb-3">
+                <div class="flex justify-between"><span>20 Diamond</span><span class="text-ungu">Rp3.500</span></div>
+                <div class="flex justify-between"><span>55 Diamond</span><span class="text-ungu">Rp9.800</span></div>
+                <div class="flex justify-between"><span>70 Diamond</span><span class="text-ungu">Rp12.000</span></div>
+                <div class="flex justify-between"><span>355 Diamond</span><span class="text-ungu">Rp56.000</span></div>
+                <div class="flex justify-between"><span>720 Diamond</span><span class="text-ungu">Rp108.000</span></div>
+            </div>
+            <button onclick="cekBeli()" class="w-full bg-ungu/20 text-ungu py-2 rounded-lg text-sm">Beli Sekarang</button>
+        </div>
+
+        <!-- 🎮 PUBG Mobile -->
+        <div class="bg-kartu p-4 rounded-xl border border-gray-700">
+            <img src="https://files.catbox.moe/xfxvzz.jpg" alt="PUBG Mobile" class="w-16 h-16 mx-auto mb-2 rounded-lg">
+            <h3 class="font-bold text-center">PUBG Mobile</h3>
+            <p class="text-sm text-gray-400 text-center mb-2">UC</p>
+            <div class="text-xs space-y-1 mb-3">
+                <div class="flex justify-between"><span>30 UC</span><span class="text-ungu">Rp10.500</span></div>
+                <div class="flex justify-between"><span>60 UC</span><span class="text-ungu">Rp18.500</span></div>
+                <div class="flex justify-between"><span>150 UC</span><span class="text-ungu">Rp45.000</span></div>
+                <div class="flex justify-between"><span>325 UC</span><span class="text-ungu">Rp90.000</span></div>
+                <div class="flex justify-between"><span>660 UC</span><span class="text-ungu">Rp175.000</span></div>
+            </div>
+            <button onclick="cekBeli()" class="w-full bg-ungu/20 text-ungu py-2 rounded-lg text-sm">Beli Sekarang</button>
+        </div>
+
+        <!-- 🎮 Valorant -->
+        <div class="bg-kartu p-4 rounded-xl border border-gray-700">
+            <img src="https://files.catbox.moe/wvkmfq.jpg" alt="Valorant" class="w-16 h-16 mx-auto mb-2 rounded-lg">
+            <h3 class="font-bold text-center">Valorant</h3>
+            <p class="text-sm text-gray-400 text-center mb-2">Valorant Point</p>
+            <div class="text-xs space-y-1 mb-3">
+                <div class="flex justify-between"><span>300 VP</span><span class="text-ungu">Rp49.000</span></div>
+                <div class="flex justify-between"><span>475 VP</span><span class="text-ungu">Rp73.000</span></div>
+                <div class="flex justify-between"><span>1.100 VP</span><span class="text-ungu">Rp160.000</span></div>
+                <div class="flex justify-between"><span>2.400 VP</span><span class="text-ungu">Rp335.000</span></div>
+            </div>
+            <button onclick="cekBeli()" class="w-full bg-ungu/20 text-ungu py-2 rounded-lg text-sm">Beli Sekarang</button>
+        </div>
+
+        <!-- 🎮 Roblox -->
+        <div class="bg-kartu p-4 rounded-xl border border-gray-700">
+            <img src="https://files.catbox.moe/rsf4xo.jpg" alt="Roblox" class="w-16 h-16 mx-auto mb-2 rounded-lg">
+            <h3 class="font-bold text-center">Roblox</h3>
+            <p class="text-sm text-gray-400 text-center mb-2">Robux</p>
+            <div class="text-xs space-y-1 mb-3">
+                <div class="flex justify-between"><span>170 Robux</span><span class="text-ungu">Rp35.000</span></div>
+                <div class="flex justify-between"><span>400 Robux</span><span class="text-ungu">Rp72.000</span></div>
+                <div class="flex justify-between"><span>800 Robux</span><span class="text-ungu">Rp135.000</span></div>
+                <div class="flex justify-between"><span>1.700 Robux</span><span class="text-ungu">Rp270.000</span></div>
+            </div>
+            <button onclick="cekBeli()" class="w-full bg-ungu/20 text-ungu py-2 rounded-lg text-sm">Beli Sekarang</button>
+        </div>
+
+        <!-- 🎮 Higgs Domino -->
+        <div class="bg-kartu p-4 rounded-xl border border-gray-700">
+            <img src="https://files.catbox.moe/hpyri8.jpg" alt="Higgs Domino" class="w-16 h-16 mx-auto mb-2 rounded-lg">
+            <h3 class="font-bold text-center">Higgs Domino</h3>
+            <p class="text-sm text-gray-400 text-center mb-2">Koin Emas</p>
+            <div class="text-xs space-y-1 mb-3">
+                <div class="flex justify-between"><span>50M Koin</span><span class="text-ungu">Rp5.500</span></div>
+                <div class="flex justify-between"><span>100M Koin</span><span class="text-ungu">Rp9.500</span></div>
+                <div class="flex justify-between"><span>500M Koin</span><span class="text-ungu">Rp45.000</span></div>
+                <div class="flex justify-between"><span>1B Koin</span><span class="text-ungu">Rp85.000</span></div>
+                <div class="flex justify-between"><span>3B Koin</span><span class="text-ungu">Rp240.000</span></div>
+            </div>
+            <button onclick="cekBeli()" class="w-full bg-ungu/20 text-ungu py-2 rounded-lg text-sm">Beli Sekarang</button>
+        </div>
+
+    </div>
+</section>
+
+<!-- ✅ CARA BELI & BAYAR -->
+<section id="carabayar" class="px-4 py-12 max-w-4xl mx-auto border-t border-gray-700">
+    <h2 class="text-2xl font-bold text-center mb-8"><span class="gradasi">Cara Beli & Bayar</span></h2>
+
+    <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-kartu p-5 rounded-xl border border-gray-700">
+            <h3 class="font-semibold text-lg mb-4 text-ungu"><i class="fa fa-list-ol"></i> CARA BELI</h3>
+            <div class="space-y-2 text-gray-300 text-sm">
+                <p>1. Klik tombol "Masuk / Daftar" dulu</p>
+                <p>2. Pilih game yang ingin dibeli</p>
+                <p>3. Klik tombol "Beli Sekarang"</p>
+                <p>4. Isi ID Game & Username dengan benar</p>
+                <p>5. Lakukan pembayaran sesuai nominal</p>
+                <p>6. Buat struk lalu kirim ke Admin</p>
+                <p>7. Tunggu konfirmasi, barang masuk otomatis</p>
+            </div>
+        </div>
+
+        <div class="bg-kartu p-5 rounded-xl border border-gray-700">
+            <h3 class="font-semibold text-lg mb-4 text-green-400"><i class="fa fa-info-circle"></i> CARA BAYAR</h3>
+            <div class="space-y-3 text-gray-300 text-sm">
+                <div>
+                    <p class="font-medium text-white">🔹 QRIS</p>
+                    <p>Scan kode QRIS yang tersedia, masukkan nominal pas lalu bayar lewat aplikasi apa saja.</p>
+                </div>
+                <div>
+                    <p class="font-medium text-white">🔹 Transfer DANA</p>
+                    <p>Kirim ke nomor <b>0851-6993-5089</b> a.n EN**** YU*****. Pastikan jumlahnya benar!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-6">
+        <a href="#topup" class="inline-block bg-ungu px-6 py-3 rounded-lg font-semibold">
+            <i class="fa fa-gamepad"></i> Lihat Daftar Game
+        </a>
+    </div>
+</section>
+
+
+<!-- ✅ FOOTER -->
+<footer class="bg-kartu border-t border-gray-700 py-4 text-center text-sm text-gray-500">
+    <p>&copy; 2026 Xdnry777. Semua Hak Dilindungi.</p>
+</footer>
+
+
 <script>
-let dataStrukSaja = '';
-function buatStruk() {
-    const game = document.getElementById('pilihGame').value;
-    const id = document.getElementById('idGame').value;
-    const user = document.getElementById('userGame').value;
-    const nama = localStorage.getItem('nama') || 'Pembeli';
-    if(!game || !id || !user) { alert('⚠️ Lengkapi data dulu!'); return; }
-
-    const tgl = new Date().toLocaleDateString('id-ID', {day:'2-digit', month:'long', year:'numeric'});
-    const trx = 'TRX-' + Math.floor(Math.random() * 90000) + 10000;
-
-    document.getElementById('s-tgl').textContent = tgl;
-    document.getElementById('s-trx').textContent = trx;
-    document.getElementById('s-nama').textContent = nama;
-    document.getElementById('s-game').textContent = game;
-    document.getElementById('s-id').textContent = id;
-    document.getElementById('s-user').textContent = user;
-
-    dataStrukSaja = `══════════════════════\nSTRUK PEMBELIAN\nXdnry777\n══════════════════════\n📅 Tanggal : ${tgl}\n📝 No. Trx : ${trx}\n👤 Pembeli: ${nama}\n══════════════════════\n🎮 Game    : ${game}\n🆔 ID Game : ${id}\n👤 Username: ${user}\n══════════════════════\n📊 STATUS  : ⏳ BELUM LUNAS\n══════════════════════\nCatatan: Kesalahan ID bukan tanggung jawab admin & tidak bisa refund.`;
-
-    document.getElementById('struk-cetak').classList.remove('hidden');
-    document.getElementById('tombol-aksi').classList.remove('hidden');
+// FUNGSI MENU
+function bukaMenu() {
+    document.getElementById('menuSamping').classList.add('buka');
+    document.getElementById('latarTutup').classList.remove('hidden');
 }
 
-function kirimKeWA() {
-    window.open(`https://wa.me/6285169935089?text=${encodeURIComponent(dataStrukSaja)}`, '_blank');
-    const st = document.querySelector('.text-yellow-700');
-    const kt = document.querySelector('.border-yellow-500');
-    st.textContent = '✅ STATUS: SUDAH LUNAS';
-    st.classList.replace('text-yellow-700', 'text-green-700');
-    kt.classList.replace('border-yellow-500', 'border-green-500');
-    kt.classList.replace('bg-yellow-50', 'bg-green-50');
+function tutupMenu() {
+    document.getElementById('menuSamping').classList.remove('buka');
+    document.getElementById('latarTutup').classList.add('hidden');
+}
+
+// CEK JIKA MAU BELI
+function cekBeli() {
+    if(localStorage.getItem('login') === 'ya') {
+        location.href = 'bayar.html';
+    } else {
+        alert('⚠️ Silakan Login / Daftar Dulu!');
+        location.href = 'login.html';
+    }
 }
 </script>
+
 </body>
 </html>
