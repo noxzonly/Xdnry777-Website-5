@@ -17,12 +17,12 @@
             -webkit-background-clip: text;
             color: transparent;
         }
-
-        /* ANIMASI MENU SAMPING */
+        /* ✅ MENU AWALNYA TERSOROT KE KIRI (TIDAK TERLIHAT) */
         #menuSamping {
             transform: translateX(-100%);
             transition: 0.3s ease;
         }
+        /* ✅ BAR MUNCUL KALAU DITEKAN */
         #menuSamping.buka {
             transform: translateX(0);
         }
@@ -30,7 +30,7 @@
 </head>
 <body class="bg-gelap text-white min-h-screen">
 
-<!-- ✅ HEADER UTAMA: NAMA TOKO BESAR -->
+<!-- HEADER UTAMA -->
 <header class="bg-kartu border-b border-gray-700 py-6 text-center">
     <h1 class="text-4xl font-extrabold mb-1">
         <span class="gradasi">Xdnry777</span>
@@ -38,7 +38,7 @@
     <p class="text-lg text-gray-300">Top Up Semua Game Terpercaya</p>
 </header>
 
-<!-- BARIS MENU NAVIGASI -->
+<!-- BARIS MENU: TOMBOL GARIS TIGA -->
 <div class="bg-gelap sticky top-0 z-40 px-4 py-3 flex justify-between items-center border-b border-gray-700">
     <button onclick="bukaMenu()" class="text-xl">
         <i class="fa fa-bars"></i>
@@ -46,27 +46,8 @@
     <span class="text-sm text-gray-400">Menu Utama</span>
     <div></div>
 </div>
-    <nav class="space-y-3">
-        <a href="#" class="block py-2 border-b border-gray-700 hover:text-ungu">
-            <i class="fa fa-home mr-2"></i> Beranda
-        </a>
-        <a href="#topup" class="block py-2 border-b border-gray-700 hover:text-ungu">
-            <i class="fa fa-gamepad mr-2"></i> Daftar Game
-        </a>
-        <a href="#carabayar" class="block py-2 border-b border-gray-700 hover:text-ungu">
-            <i class="fa fa-credit-card mr-2"></i> Cara Beli
-        </a>
-        <a href="login.html" class="block py-2 border-b border-gray-700 hover:text-ungu">
-            <i class="fa fa-user mr-2"></i> Masuk / Daftar
-        </a>
 
-        <!-- ✅ TOMBOL KELUAR AKUN BARU -->
-        <button onclick="keluarAkun()" class="w-full text-left block py-2 border-b border-gray-700 hover:text-red-400">
-            <i class="fa fa-sign-out mr-2"></i> Keluar Akun
-        </button>
-    </nav>
-
-<!-- ✅ MENU SAMPING -->
+<!-- ✅ MENU SAMPING (BARU MUNCUL KALAU DITEKAN) -->
 <div id="menuSamping" class="fixed top-0 left-0 h-full w-64 bg-kartu border-r border-gray-700 z-50 p-4">
     <div class="flex justify-between items-center mb-6">
         <span class="text-xl font-bold gradasi">Xdnry777</span>
@@ -88,23 +69,25 @@
         <a href="login.html" class="block py-2 border-b border-gray-700 hover:text-ungu">
             <i class="fa fa-user mr-2"></i> Masuk / Daftar
         </a>
+        <!-- ✅ FITUR KELUAR AKUN DI DALAM MENU -->
+        <button onclick="keluarAkun()" class="w-full text-left block py-2 border-b border-gray-700 hover:text-red-400">
+            <i class="fa fa-sign-out mr-2"></i> Keluar Akun
+        </button>
     </nav>
 </div>
 
-<!-- LAPISAN GELAP SAAT MENU TERBUKA -->
+<!-- LATAR BELAKANG GELAP SAAT MENU BUKA -->
 <div id="latarTutup" onclick="tutupMenu()" class="fixed inset-0 bg-black/50 z-40 hidden"></div>
 
-<!-- ✅ DAFTAR GAME LENGKAP -->
+<!-- ✅ DAFTAR GAME DENGAN LOGO TERBARU -->
 <section id="topup" class="px-4 py-8 max-w-4xl mx-auto">
     <h2 class="text-2xl font-bold text-center mb-8"><span class="gradasi">Pilih Game Kamu</span></h2>
 
     <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-       </div>
-</section>
 
         <!-- 🎮 Mobile Legends -->
         <div class="bg-kartu p-4 rounded-xl border border-gray-700">
-            <img src="https://files.catbox.moe/q692nn.jpg" alt="Mobile Legends" class="w-16 h-16 mx-auto mb-2 rounded-lg">
+            <img src="https://i.imgur.com/8Z7kFzL.png" alt="Mobile Legends" class="w-16 h-16 mx-auto mb-2 rounded-lg object-cover">
             <h3 class="font-bold text-center">Mobile Legends</h3>
             <p class="text-sm text-gray-400 text-center mb-2">Diamond</p>
             <div class="text-xs space-y-1 mb-3">
@@ -119,7 +102,7 @@
 
         <!-- 🎮 Free Fire -->
         <div class="bg-kartu p-4 rounded-xl border border-gray-700">
-            <img src="https://files.catbox.moe/00jh4l.jpg" alt="Free Fire" class="w-16 h-16 mx-auto mb-2 rounded-lg">
+            <img src="https://i.imgur.com/9bQkDxl.png" alt="Free Fire" class="w-16 h-16 mx-auto mb-2 rounded-lg object-cover">
             <h3 class="font-bold text-center">Free Fire</h3>
             <p class="text-sm text-gray-400 text-center mb-2">Diamond</p>
             <div class="text-xs space-y-1 mb-3">
@@ -134,7 +117,7 @@
 
         <!-- 🎮 PUBG Mobile -->
         <div class="bg-kartu p-4 rounded-xl border border-gray-700">
-            <img src="https://files.catbox.moe/xfxvzz.jpg" alt="PUBG Mobile" class="w-16 h-16 mx-auto mb-2 rounded-lg">
+            <img src="https://i.imgur.com/cF2sXZL.png" alt="PUBG Mobile" class="w-16 h-16 mx-auto mb-2 rounded-lg object-cover">
             <h3 class="font-bold text-center">PUBG Mobile</h3>
             <p class="text-sm text-gray-400 text-center mb-2">UC</p>
             <div class="text-xs space-y-1 mb-3">
@@ -149,7 +132,7 @@
 
         <!-- 🎮 Valorant -->
         <div class="bg-kartu p-4 rounded-xl border border-gray-700">
-            <img src="https://files.catbox.moe/wvkmfq.jpg" alt="Valorant" class="w-16 h-16 mx-auto mb-2 rounded-lg">
+            <img src="https://i.imgur.com/4kDZb1L.png" alt="Valorant" class="w-16 h-16 mx-auto mb-2 rounded-lg object-cover">
             <h3 class="font-bold text-center">Valorant</h3>
             <p class="text-sm text-gray-400 text-center mb-2">Valorant Point</p>
             <div class="text-xs space-y-1 mb-3">
@@ -163,7 +146,7 @@
 
         <!-- 🎮 Roblox -->
         <div class="bg-kartu p-4 rounded-xl border border-gray-700">
-            <img src="https://files.catbox.moe/rsf4xo.jpg" alt="Roblox" class="w-16 h-16 mx-auto mb-2 rounded-lg">
+            <img src="https://i.imgur.com/5zWqXbL.png" alt="Roblox" class="w-16 h-16 mx-auto mb-2 rounded-lg object-cover">
             <h3 class="font-bold text-center">Roblox</h3>
             <p class="text-sm text-gray-400 text-center mb-2">Robux</p>
             <div class="text-xs space-y-1 mb-3">
@@ -177,7 +160,7 @@
 
         <!-- 🎮 Higgs Domino -->
         <div class="bg-kartu p-4 rounded-xl border border-gray-700">
-            <img src="https://files.catbox.moe/hpyri8.jpg" alt="Higgs Domino" class="w-16 h-16 mx-auto mb-2 rounded-lg">
+            <img src="https://i.imgur.com/aX7dFgH.png" alt="Higgs Domino" class="w-16 h-16 mx-auto mb-2 rounded-lg object-cover">
             <h3 class="font-bold text-center">Higgs Domino</h3>
             <p class="text-sm text-gray-400 text-center mb-2">Koin Emas</p>
             <div class="text-xs space-y-1 mb-3">
@@ -193,81 +176,61 @@
     </div>
 </section>
 
-<!-- ✅ CARA BELI & BAYAR -->
+<!-- CARA BELI & BAYAR -->
 <section id="carabayar" class="px-4 py-12 max-w-4xl mx-auto border-t border-gray-700">
     <h2 class="text-2xl font-bold text-center mb-8"><span class="gradasi">Cara Beli & Bayar</span></h2>
-
     <div class="grid md:grid-cols-2 gap-6">
         <div class="bg-kartu p-5 rounded-xl border border-gray-700">
             <h3 class="font-semibold text-lg mb-4 text-ungu"><i class="fa fa-list-ol"></i> CARA BELI</h3>
             <div class="space-y-2 text-gray-300 text-sm">
-                <p>1. Klik tombol "Masuk / Daftar" dulu</p>
+                <p>1. Klik tombol "Masuk / Daftar"</p>
                 <p>2. Pilih game yang ingin dibeli</p>
-                <p>3. Klik tombol "Beli Sekarang"</p>
-                <p>4. Isi ID Game & Username dengan benar</p>
-                <p>5. Lakukan pembayaran sesuai nominal</p>
-                <p>6. Buat struk lalu kirim ke Admin</p>
-                <p>7. Tunggu konfirmasi, barang masuk otomatis</p>
+                <p>3. Isi data ID & Username</p>
+                <p>4. Lakukan pembayaran</p>
+                <p>5. Buat struk lalu kirim ke Admin</p>
             </div>
         </div>
-
         <div class="bg-kartu p-5 rounded-xl border border-gray-700">
             <h3 class="font-semibold text-lg mb-4 text-green-400"><i class="fa fa-info-circle"></i> CARA BAYAR</h3>
             <div class="space-y-3 text-gray-300 text-sm">
-                <div>
-                    <p class="font-medium text-white">🔹 QRIS</p>
-                    <p>Scan kode QRIS yang tersedia, masukkan nominal pas lalu bayar lewat aplikasi apa saja.</p>
-                </div>
-                <div>
-                    <p class="font-medium text-white">🔹 Transfer DANA</p>
-                    <p>Kirim ke nomor <b>0851-6993-5089</b> a.n EN**** YU*****. Pastikan jumlahnya benar!</p>
-                </div>
+                <p>🔹 QRIS: Scan kode lalu bayar</p>
+                <p>🔹 DANA: 0851-6993-5089 a.n EN**** YU*****</p>
             </div>
         </div>
     </div>
-
-    <div class="text-center mt-6">
-        <a href="#topup" class="inline-block bg-ungu px-6 py-3 rounded-lg font-semibold">
-            <i class="fa fa-gamepad"></i> Lihat Daftar Game
-        </a>
-    </div>
 </section>
 
-
-<!-- ✅ FOOTER -->
 <footer class="bg-kartu border-t border-gray-700 py-4 text-center text-sm text-gray-500">
     <p>&copy; 2026 Xdnry777. Semua Hak Dilindungi.</p>
 </footer>
 
-
 <script>
-// FUNGSI MENU
+// ✅ FUNGSI BUKA MENU
 function bukaMenu() {
     document.getElementById('menuSamping').classList.add('buka');
     document.getElementById('latarTutup').classList.remove('hidden');
 }
-
+// ✅ FUNGSI TUTUP MENU
 function tutupMenu() {
     document.getElementById('menuSamping').classList.remove('buka');
     document.getElementById('latarTutup').classList.add('hidden');
 }
 
-// FUNGSI KELUAR AKUN
-function keluarAkun() {
-    if(confirm('Yakin mau keluar dari akun ini?')) {
-        localStorage.removeItem('login');
-        localStorage.removeItem('nama');
-        alert('Berhasil keluar!');
-        location.href = 'login.html';
-    }
-}
-
-// CEK JIKA MAU BELI
 function cekBeli() {
     if(localStorage.getItem('login') === 'ya') {
         location.href = 'bayar.html';
     } else {
-        alert('⚠️ Silakan Login / Daftar Dulu!');
+        alert('⚠️ Silakan Login Dulu!');
+        location.href = 'login.html';
+    }
+}
+
+// ✅ FUNGSI KELUAR AKUN
+function keluarAkun() {
+    if(confirm('Yakin mau keluar dari akun ini?')) {
+        localStorage.removeItem('login');
+        localStorage.removeItem('nama');
+        alert('✅ Berhasil keluar dari akun!');
         location.href = 'login.html';
     }
 }
