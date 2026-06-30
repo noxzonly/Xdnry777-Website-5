@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beranda - Xdnry777</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <script>
+        tailwind.config = {
+            theme: { extend: { colors: { gelap: '#121212', kartu: '#1E1E1E', ungu: '#8B5CF6' } } }
+        }
+    </script>
+    <style>
+        .gradasi {
+            background: linear-gradient(90deg, #8B5CF6, #EC4899);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        #menuSamping {
+            transform: translateX(-100%);
+            transition: 0.3s ease;
+        }
+        #menuSamping.buka {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body class="bg-gelap text-white min-h-screen">
+
+<!-- HEADER -->
+<header class="bg-kartu border-b border-gray-700 py-6 text-center">
+    <h1 class="text-4xl font-extrabold mb-1">
+        <span class="gradasi">Xdnry777</span>
+    </h1>
+    <p class="text-lg text-gray-300">Top Up Game Tercepat & Terpercaya</p>
+</header>
+
+<!-- TOMBOL MENU -->
+<div class="bg-gelap sticky top-0 z-40 px-4 py-3 flex justify-between items-center border-b border-gray-700">
+    <button onclick="bukaMenu()" class="text-xl">
+        <i class="fa fa-bars"></i>
+    </button>
+    <span class="text-sm text-gray-400">Beranda</span>
+    <div></div>
+</div>
+
+<!-- MENU SAMPING -->
+<div id="menuSamping" class="fixed top-0 left-0 h-full w-64 bg-kartu border-r border-gray-700 z-50 p-4">
+    <div class="flex justify-between items-center mb-6">
+        <span class="text-xl font-bold gradasi">Xdnry777</span>
+        <button onclick="tutupMenu()" class="text-2xl">
+            <i class="fa fa-times"></i>
+        </button>
+    </div>
+
+    <nav class="space-y-3">
+        <a href="beranda.html" class="block py-2 border-b border-gray-700 text-ungu">
+            <i class="fa fa-home mr-2"></i> Beranda
+        </a>
+        <a href="index.html" class="block py-2 border-b border-gray-700 hover:text-ungu">
+            <i class="fa fa-gamepad mr-2"></i> Daftar Game
+        </a>
+        <a href="#carabayar" class="block py-2 border-b border-gray-700 hover:text-ungu">
+            <i class="fa fa-credit-card mr-2"></i> Cara Beli
+        </a>
+        <a href="login.html" class="block py-2 border-b border-gray-700 hover:text-ungu">
+            <i class="fa fa-user mr-2"></i> Masuk / Daftar
+        </a>
+        <button onclick="keluarAkun()" class="w-full text-left block py-2 border-b border-gray-700 hover:text-red-400">
+            <i class="fa fa-sign-out mr-2"></i> Keluar Akun
+        </button>
+    </nav>
+</div>
+<div id="latarTutup" onclick="tutupMenu()" class="fixed inset-0 bg-black/50 z-40 hidden"></div>
+
+<!-- ISI HALAMAN BERANDA -->
+<section class="px-4 py-10 max-w-2xl mx-auto text-center">
+    <div class="mb-8">
+        <h2 class="text-2xl font-bold mb-3">Selamat Datang di <span class="gradasi">Xdnry777 Store</span></h2>
+        <p class="text-gray-400">Tempat top up game paling aman, murah, dan proses instan!</p>
+    </div>
+
+    <div class="grid gap-4 mb-8">
+        <div class="bg-kartu p-5 rounded-xl border border-gray-700 text-left">
+            <h3 class="font-semibold text-lg text-ungu mb-2"><i class="fa fa-bolt"></i> Proses Cepat</h3>
+            <p class="text-sm text-gray-300">Top up masuk hitungan menit setelah pembayaran terkonfirmasi.</p>
+        </div>
+        <div class="bg-kartu p-5 rounded-xl border border-gray-700 text-left">
+            <h3 class="font-semibold text-lg text-green-400 mb-2"><i class="fa fa-tag"></i> Harga Termurah</h3>
+            <p class="text-sm text-gray-300">Dapatkan harga terbaik, jauh lebih hemat dari toko lain.</p>
+        </div>
+        <div class="bg-kartu p-5 rounded-xl border border-gray-700 text-left">
+            <h3 class="font-semibold text-lg text-blue-400 mb-2"><i class="fa fa-shield"></i> 100% Aman</h3>
+            <p class="text-sm text-gray-300">Transaksi terjamin aman, data pribadi terjaga rahasianya.</p>
+        </div>
+    </div>
+
+    <a href="index.html" class="inline-block bg-ungu px-8 py-3 rounded-xl font-bold text-lg hover:opacity-90">
+        <i class="fa fa-shopping-cart mr-2"></i> Mulai Top Up
+    </a>
+</section>
+
+<section id="carabayar" class="px-4 py-10 max-w-2xl mx-auto border-t border-gray-700">
+    <h2 class="text-xl font-bold text-center mb-6"><span class="gradasi">Cara Beli</span></h2>
+    <div class="bg-kartu p-5 rounded-xl border border-gray-700 text-left space-y-2 text-sm">
+        <p>1. Klik tombol <b>Mulai Top Up</b></p>
+        <p>2. Pilih game yang ingin diisi</p>
+        <p>3. Masukkan ID & Nama Akun</p>
+        <p>4. Lakukan pembayaran via QRIS atau DANA</p>
+        <p>5. Tunggu sebentar, item masuk otomatis!</p>
+    </div>
+</section>
+
+<footer class="bg-kartu border-t border-gray-700 py-4 text-center text-sm text-gray-500">
+    <p>&copy; 2026 Xdnry777. Semua Hak Dilindungi.</p>
+</footer>
+
+<script>
+function bukaMenu() {
+    document.getElementById('menuSamping').classList.add('buka');
+    document.getElementById('latarTutup').classList.remove('hidden');
+}
+function tutupMenu() {
+    document.getElementById('menuSamping').classList.remove('buka');
+    document.getElementById('latarTutup').classList.add('hidden');
+}
+function keluarAkun() {
+    if(confirm('Yakin mau keluar?')) {
+        localStorage.removeItem('login');
+        localStorage.removeItem('nama');
+        alert('Berhasil keluar!');
+        location.href = 'login.html';
+    }
+}
+</script>
+
+</body>
+</html>
